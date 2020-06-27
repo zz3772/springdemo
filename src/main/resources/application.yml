@@ -1,0 +1,18 @@
+server:
+  #端口配置
+  port: 8088
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+mybatis:
+  #mapper路径
+  mapper-locations: classpath:mapper/*.xml
+  #实体类路径
+  type-aliases-package: com.sutest.model
+#  #开启驼峰转换
+#  configuration:
+#    mapUnderscoreToCamelCase: true

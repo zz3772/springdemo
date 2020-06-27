@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sutest.dao.TestCaseMapper">
+    <resultMap id="BaseResultMap" type="com.sutest.model.TestCase">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="caseName" jdbcType="VARCHAR" property="caseName" />
+        <result column="outTime" jdbcType="INTEGER" property="outTime" />
+        <result column="caseDesc" jdbcType="VARCHAR" property="caseDesc" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+    <select id="findAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT * FROM testcase
+        where 1=1
+        <if test="caseName != null and caseName != ''">
+            and caseName=#{caseName,jdbcType=VARCHAR}
+        </if>
+        <if test="caseDesc != null and caseDesc != ''">
+        and `caseDesc`=#{caseDesc,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sutest.model.TestCase" useGeneratedKeys="true">
+        insert into testcase (caseName, outTime, caseDesc, createTime)
+        values (#{caseName,jdbcType=VARCHAR}, #{outTime,jdbcType=INTEGER}, #{caseDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP} )
+    </insert>
+</mapper>
