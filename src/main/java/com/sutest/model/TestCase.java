@@ -7,9 +7,27 @@ import java.util.Date;
 
 @Data
 public class TestCase implements Serializable {
-    private Long id;
+    private Integer id;
+
+    /**
+     * 用例名称
+     */
     private String caseName;
-    private int outTime;
+
+    /**
+     * 超时时间（秒）
+     */
+    private Integer outTime;
+
+    /**
+     * 用例描述
+     */
     private String caseDesc;
+
+    /**
+     * 创建时间
+     */
     private Date createTime;
+
+    private static final long serialVersionUID = 1L;
 }
